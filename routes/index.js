@@ -16,7 +16,9 @@ router.get('/fuelcalc', function (req, res, next) {
             // yey!
             var rows = body.rows;
             res.render('fuelcalc', {"fuelEntryList": rows});
-        }
+        } else {
+	    res.send({msg:err});
+	}
     });
 
 });
