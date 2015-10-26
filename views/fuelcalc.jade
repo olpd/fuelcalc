@@ -1,0 +1,67 @@
+extends layout
+block content
+    h1.
+        Fuel Consumption
+
+    // Toggle Table and Graph
+    #header
+        div(class='ui segment')
+            h3 Enable Graph:
+            div(class='ui toggle checkbox checked')
+                input#headerToggle(name='headerToggle', type='checkbox')
+                label View graph
+
+
+    // FUEL GRAPH WRAPPER
+    #fuelGraphWrapper(hidden='true')
+        div(class='ui segment')
+            h2 Average fuel consumption in l/100km:
+            div(class='ct-chart ct-minor-seventh')
+    // /FUEL GRAPH WRAPPER
+
+    // Wrapper
+    #wrapper
+        // ADD FIELD
+        #addField
+            h2 Add new fuel entries:
+            fieldset(class='fixed')
+                div(class='fc-input ui right labeled input')
+                    input#inputKM(type='number', placeholder='Enter mileage')
+                    div(class='ui basic label')
+                        text km
+                div(class='fc-input ui right labeled input')
+                    input#inputFuel(type='number', placeholder='Enter amount of fuel')
+                    div(class='ui basic label')
+                        text l
+                button#inputSubmitButton(class='fc-button ui green button')
+                    text Submit
+        // /ADD FIELD
+
+        #messageBox
+            div(class='ui hidden success message', id='successMessage')
+                i(class='close icon')
+                div(class='header')
+                    text New data was successfully added!
+            div(class='ui hidden error message', id='errorMessage')
+                i(class='close icon')
+                div(class='header')
+                    text Could not add this data!
+                text(id='errorText') Regular Text
+
+
+        //FUEL TABLE
+        #fuelTable
+            table(class="ui striped table")
+                thead
+                    th Index
+                    th Mileage
+                    th Fuel (amount in l)
+                    th Consumption (in l/100km)
+                    th Delete Entry
+                tbody
+        // /FUEL TABLE
+        br
+    // /WRAPPER
+
+                
+
