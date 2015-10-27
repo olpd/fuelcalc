@@ -33,6 +33,19 @@ block content
                     input#inputFuel(type='number', placeholder='Enter amount of fuel')
                     div(class='ui basic label')
                         text l
+                text Driving style:
+                div(class='ui selection dropdown' id='drivingStyleDropdown')
+                    input#inputDrivingStyle(name='drivingStyle' type='hidden')
+                    i(class='dropdown icon')
+                    div(class='default text')
+                        text normal
+                    div(class='menu')
+                        div(class='item' data-value='speedy')
+                            p speedy
+                        div(class='item' data-value='normal')
+                            p normal
+                        div(class='item' data-value='slow')
+                            p slow
                 button#inputSubmitButton(class='fc-button ui green button')
                     text Submit
         // /ADD FIELD

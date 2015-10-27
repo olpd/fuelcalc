@@ -36,6 +36,9 @@ router.get('/fuelcalc/entries', function (req, res, next) {
             for (var i = 0; i < body.rows.length; i++) {
                 fuelEntries[i] = rows[i].value;
             }
+            fuelEntries.sort(function(a, b) {
+                return a.km - b.km;
+            })
             res.json(fuelEntries);
 
         }
@@ -59,7 +62,9 @@ router.post('/fuelcalc/entries', function (req, res, next) {
     if (km.match(regex) && fuel.match(regex)) {
         var newFuelEntry = {
             km: km,
-            fuel: fuel
+            fuel: fuel,
+            date: req.body.date,
+            drivingStyle: req.body.drivingStyle
         }
 
         db.insert(newFuelEntry, function(err, body){

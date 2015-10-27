@@ -9,16 +9,20 @@ var viewMode = false;
 // DOM Ready ==========================================================================================================
 $(document).ready(function() {
 
-    include('fuellist.js')
+    include('fuellist.js');
 
     // Populate the user table on initial page load
     populateTable();
 
     // Connect submit button
-    $('#inputSubmitButton').on('click', submitEntry)
+    $('#inputSubmitButton').on('click', submitEntry);
 
     // Connect toggle button
-    $('#headerToggle').on('click', toggleEditMode)
+    $('#headerToggle').on('click', toggleEditMode);
+
+    // driving style dropdown
+    $('.ui.dropdown').dropdown();
+    $('#inputDrivingStyle').on('click', dropdownClicked);
 
     // Delete User link click
     $('#fuelTable table tbody').on('click', 'td a.linkdeleteentry', deleteEntry);
@@ -82,9 +86,15 @@ function populateTable() {
 function submitEntry(event){
     event.preventDefault();
 
+    var drivingStyle = $('#addField fieldset input#inputDrivingStyle').val();
+    if (drivingStyle === '') {
+        drivingStyle = 'normal';
+    }
     var newEntry = {
         'km': $('#addField fieldset input#inputKM').val(),
-        'fuel' : $('#addField fieldset input#inputFuel').val()
+        'fuel' : $('#addField fieldset input#inputFuel').val(),
+        'date' : new Date().toISOString(),
+        'drivingStyle' : drivingStyle
     }
     $.ajax({
         type: 'POST',
@@ -195,4 +205,9 @@ function toggleEditMode(event) {
         $('#fuelGraphWrapper').transition('hide');
     }
 
+}
+
+function dropdownClicked(event) {
+
+    //this.dropdown();
 }

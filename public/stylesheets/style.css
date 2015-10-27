@@ -25,3 +25,8 @@ div{
     margin-left:5px;
     margin-right:5px;
 }
+
+#drivingStyleDropdown {
+    padding: 0px;
+    margin: 5px;
+}
