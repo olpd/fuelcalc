@@ -10,8 +10,7 @@ router.get('/', function (req, res, next) {
 router.get('/fuelcalc', function (req, res, next) {
 
     var db = req.db;
-    db.view('fuelEntries', 'by_km', {'key': 'km', 'include_docs': true}, function(err, body) {
-
+    db.view('all', 'by_id', function(err, body) {
         if (!err) {
             // yey!
             var rows = body.rows;
@@ -26,7 +25,7 @@ router.get('/fuelcalc', function (req, res, next) {
 /* GET fuellist. */
 router.get('/fuelcalc/entries', function (req, res, next) {
     var db = req.db;
-    db.view('all', 'by_all', {'include_docs': true}, function(err, body) {
+    db.view('all', 'by_id', function(err, body) {
 
         if (!err) {
             // yey!

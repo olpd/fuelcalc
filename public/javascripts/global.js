@@ -93,7 +93,7 @@ function submitEntry(event){
     var newEntry = {
         'km': $('#addField fieldset input#inputKM').val(),
         'fuel' : $('#addField fieldset input#inputFuel').val(),
-        'date' : new Date().toISOString(),
+        'date' : new Date().getTime(),
         'drivingStyle' : drivingStyle
     }
     $.ajax({
