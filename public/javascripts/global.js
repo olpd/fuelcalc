@@ -109,7 +109,17 @@ function submitEntry(event){
             // update table
             populateTable();
             // show success message
+            //$('#successMessage').transition('show');
+
+
+            var lastEntry = fuelTableData[fuelTableData.length - 1];
+            var distance = newEntry.km - lastEntry.km;
+            var avg = (newEntry.fuel / distance) * 100;
+
+            var successMessage = "New data was added successfully! New average: " + avg;
+
             $('#successMessage').transition('show');
+            $('#successMessage').html('<p>' + successMessage + '</p>');
             $('#errorMessage').transition('hide');
 
         }
